@@ -11,6 +11,7 @@ import cartImage from '../assets/imgs/bx-cart.svg';
 
 const cartItems: ICartItem[] = [
     {
+       _id: 'hhsdsahd',
        imagePath: 'https://cdn.alza.sk/ImgW.ashx?fd=f16&cd=NT379u80o3',
        name: 'Lenovo Legion 5 Pro 16ACH6H', 
        count: 1,
@@ -22,7 +23,12 @@ const cartItems: ICartItem[] = [
 const Header: FC = () => {
  
   const [isShownCart, setShownCart] = useState(false),
-    total = cartItems.reduce((ac, i) => ac + i.count , 0);
+    total = cartItems.reduce((ac, i) => ac + i.price , 0),
+    removeHandler = (id: string) => {
+        console.log(id);
+    };
+
+
    
       
 
@@ -50,12 +56,14 @@ const Header: FC = () => {
                 <div className="">
                     <div>{i.name}</div>
                     <div>{`${i.count} x ${i.price}`}</div>
+                    <button className='text-red-600 bg-transparent border-0' onClick={() => removeHandler(i._id)}>Remove</button>
                 </div> 
                 </div>
             ))}
-            
-            <div className="text-lg">
-                Total: <b>{total}</b>
+
+                        
+            <div className="text-lg border-solid border-t-2 border-red-100 pt-1 mt-5">
+                Total: <b>${total}</b>
             </div>
            
         </div>
