@@ -44,7 +44,7 @@ const Header: FC = () => {
             <img src={cartImage} alt="" width="40" />
         </button>
 
-        <div className={cn('absolute right-0 shadow-md p-5 rounded-md z-10', {
+        <div className={cn('bg-white absolute right-0 shadow-md p-5 rounded-md z-10', {
             hidden: !isShownCart
         })} style={{
             top: '60px'

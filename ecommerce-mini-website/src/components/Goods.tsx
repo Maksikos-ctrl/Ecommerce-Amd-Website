@@ -1,6 +1,8 @@
 import React from 'react';
 
 
+import GoodItem from './GoodItem';
+
 import {IGood} from '../types';
 
 const goods: IGood[] = [
@@ -36,7 +38,9 @@ const Goods = () => {
   return (
     <div className="mt-4">
         
-    
+       {goods.map(g => (
+           <GoodItem good={g} key={g._id}/>
+       ))}
 
     </div>
   )
