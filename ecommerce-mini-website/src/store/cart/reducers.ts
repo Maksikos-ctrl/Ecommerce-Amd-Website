@@ -6,15 +6,32 @@ const initState: ICartItem[] = []; // this is our basket in which we will be add
 export const cartReducer = (state = initState, action: TypeActionCart) => {
     switch (action.type) {
       case actionTypes.CART_ADD_ITEM:
-        {
-            const cart = [...state],
-                {count, good} = action.payload,
-                foundGood = cart.find(i => i._id === good._id);
+      {
+        const cart = [...state],
+            {count, good} = action.payload, // from action.payload we're getting count - quanitity of goods which have to be added in a basket and good
+            foundGood = cart.find(i => i._id === good._id);
 
-        }
-        return { value: state + 1 }
+
+        foundGood ? foundGood.count = count : cart.push({...good, count}) // if we have found our good, we're changing its count, unless, we're pushing in a basket
+            
+        return cart
+      }
+       
       case actionTypes.CART_REMOVE_ITEM:
-        return { value: state - 1 }
+      {
+        const cart = [...state];
+
+        cart.forEach((i, index) => {
+
+          if (i._id === action.payload) {
+            cart.slice(index, 1) // мы обрезаем этот элемент, но без изминение prev массива
+          }  
+        });
+        return cart
+          
+      }
+
+     
       default:
         return state
     }

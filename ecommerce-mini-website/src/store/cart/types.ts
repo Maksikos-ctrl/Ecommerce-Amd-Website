@@ -2,7 +2,8 @@ import {IGood} from '../../types';
 
 export enum actionTypes {
     CART_ADD_ITEM = 'CART_ADD_ITEM',
-    CART_REMOVE_ITEM = 'CART_REMOVE_ITEM'
+    CART_REMOVE_ITEM = 'CART_REMOVE_ITEM',
+    CART_QUANTITY_ITEM = 'CART_QUANTITY_ITEM'
 }
 
 interface ICartAddingItemPayload {

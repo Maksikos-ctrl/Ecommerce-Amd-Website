@@ -1,11 +1,12 @@
-import React, {FC, useState} from 'react';
+import React, {FC} from 'react';
+import { TypeSetState } from '../types';
 
-const QuanityOfGoods: FC= () => {
+interface IQuantity {
+    count: number,
+    setCount: TypeSetState<number>
+}
 
-    const [count, setCount] = useState(0);
-
-    console.log(count);
-
+const QuanityOfGoods: FC<IQuantity> = ({count, setCount}) => {
     return (
         <div className="flex items-center my-2">
             <button onClick={() => count > 0 && setCount(count - 1)}>-</button>
