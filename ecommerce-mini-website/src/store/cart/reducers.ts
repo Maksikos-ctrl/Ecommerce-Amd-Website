@@ -33,7 +33,10 @@ export const cartReducer = (state = initState, action: TypeActionCart) => {
 
      
       default:
+        //TODO  Редьюсеры всегда должны возмращать новое состояние, даже если оно не изменилось
         return state
+
+        // return state.filter(cartItem => cartItem._id !== action.payload);
     }
 } 
 

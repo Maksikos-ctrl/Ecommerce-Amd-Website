@@ -2,31 +2,34 @@ import React, { FC, useState } from 'react';
 import cn from 'classnames';
 
 
-import {ICartItem} from '../types';
+import {ICartItem} from '../../types';
 
 
-import logoImage from '../assets/imgs/amd.svg';
-import cartImage from '../assets/imgs/bx-cart.svg';
+import logoImage from '../../assets/imgs/amd.svg';
+import cartImage from '../../assets/imgs/bx-cart.svg';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 
-const cartItems: ICartItem[] = [
-    {
-       _id: 'hhsdsahd',
-       imagePath: 'https://cdn.alza.sk/ImgW.ashx?fd=f16&cd=NT379u80o3',
-       name: 'Lenovo Legion 5 Pro 16ACH6H', 
-       count: 1,
-       price: 1500,
-    }
-];
+// const cartItems: ICartItem[] = [
+//     {
+//        _id: 'hhsdsahd',
+//        imagePath: 'https://cdn.alza.sk/ImgW.ashx?fd=f16&cd=NT379u80o3',
+//        name: 'Lenovo Legion 5 Pro 16ACH6H', 
+//        count: 1,
+//        price: 1500,
+//     }
+// ];
 
 
 const Header: FC = () => {
  
   const [isShownCart, setShownCart] = useState(false),
-    total = cartItems.reduce((ac, i) => ac + i.price , 0),
+    cart = useTypedSelector(state => state.cart),
+    total = cart.reduce((ac, i) => ac + i.price , 0),
     removeHandler = (id: string) => {
         console.log(id);
     };
+    
 
 
    
@@ -40,8 +43,14 @@ const Header: FC = () => {
     }}>
         <img src={logoImage} alt="" width="120"/>
 
-        <button className="bg-transparent border-none " onClick={() => setShownCart(!isShownCart)}>
+
+       
+
+        <button className="bg-transparent border-none relative" onClick={() => setShownCart(!isShownCart)}>
             <img src={cartImage} alt="" width="40" />
+            <div className="text-orange-600 absolute bottom-0 right-1 font-bold p-2 rounded-full bg-white w-5 h-3 flex items-center content-center text-center">
+                {cart.length}
+            </div>
         </button>
 
         <div className={cn('bg-white absolute right-0 shadow-md p-5 rounded-md z-10', {
@@ -50,7 +59,7 @@ const Header: FC = () => {
             top: '60px'
         }}
         >
-            {cartItems.map(i => (
+            {cart.map(i => (
                 <div className="flex items-center" key={`cart item${i.name}`}>
                 <img src={i.imagePath} alt={i.name} width="55" height="55" className="mr-3"/>
                 <div className="">

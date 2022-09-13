@@ -1,9 +1,9 @@
 import React from 'react';
 
 
-import GoodItem from './GoodItem';
+import GoodItem from '../item/GoodItem';
 
-import {IGood} from '../types';
+import {IGood} from '../../types';
 
 const goods: IGood[] = [
     {

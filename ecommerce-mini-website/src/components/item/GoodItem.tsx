@@ -2,10 +2,10 @@ import React, {FC, useState} from 'react';
 
 import { useDispatch } from 'react-redux';
 
-import {addToCart} from '../store/cart/actions';
-import QuanityOfGoods from './QuantityOfGoods';
+import {addToCart} from '../../store/cart/actions';
+import QuanityOfGoods from '../generalQuantity/QuantityOfGoods';
 
-import {IGood} from '../types';
+import {IGood} from '../../types';
 
 interface IGoodItem {
     good: IGood
