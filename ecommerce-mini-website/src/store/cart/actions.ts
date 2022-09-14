@@ -12,4 +12,4 @@ export const removeFromCart = (goodId: string) => ({
     payload: goodId
 });
 
-export const changeQuantityHandler = (type: 'plus' | 'minus', good: IGood) => ({});
+

@@ -1,13 +1,14 @@
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
 import cn from 'classnames';
 
 
-import {ICartItem} from '../../types';
 
 
 import logoImage from '../../assets/imgs/amd.svg';
 import cartImage from '../../assets/imgs/bx-cart.svg';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { useDispatch } from 'react-redux';
+import { removeFromCart } from '../../store/cart/actions';
 
 
 // const cartItems: ICartItem[] = [
@@ -26,8 +27,10 @@ const Header: FC = () => {
   const [isShownCart, setShownCart] = useState(false),
     cart = useTypedSelector(state => state.cart),
     total = cart.reduce((ac, i) => ac + i.price , 0),
+    dispatch = useDispatch(),
     removeHandler = (id: string) => {
-        console.log(id);
+        
+        dispatch(removeFromCart(id))
     };
     
 
@@ -60,11 +63,11 @@ const Header: FC = () => {
         }}
         >
             {cart.map(i => (
-                <div className="flex items-center" key={`cart item${i.name}`}>
+                <div className="flex items-center mb-4" key={`cart item${i.name}`}>
                 <img src={i.imagePath} alt={i.name} width="55" height="55" className="mr-3"/>
                 <div className="">
                     <div>{i.name}</div>
-                    <div>{`${i.count} x ${i.price}`}</div>
+                    <div>{`${i.count === 0 ? 1 : i.count} x ${i.price.toLocaleString() + '$'}`}</div>
                     <button className='text-red-600 bg-transparent border-0' onClick={() => removeHandler(i._id)}>Remove</button>
                 </div> 
                 </div>
@@ -72,7 +75,7 @@ const Header: FC = () => {
 
                         
             <div className="text-lg border-solid border-t-2 border-red-100 pt-1 mt-5">
-                Total: <b>${total}</b>
+                Total: <b>${total.toLocaleString()}</b>
             </div>
            
         </div>

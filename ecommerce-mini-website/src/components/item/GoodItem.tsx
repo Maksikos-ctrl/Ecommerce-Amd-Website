@@ -28,7 +28,7 @@ const GoodItem: FC<IGoodItem> = ({good}) => {
             background: 'linear-gradient(145deg, #cacaca, #f0f0f0)',
             boxShadow: '20px 20px 60px #bebebe, -20px -20px #9f9797' 
         }}>
-            <img src={good.imagePath} className="" alt={good.name}/>
+            <img src={good.imagePath} className="w-7/12 rounded-2xl" alt={good.name}/>
             <div className="text-lg font-bold my-2">{good.name}</div>
             <div className="text-sm font-bold text-gray-600">${good.price}</div>
             <QuanityOfGoods count={count} setCount={setCount}/>
