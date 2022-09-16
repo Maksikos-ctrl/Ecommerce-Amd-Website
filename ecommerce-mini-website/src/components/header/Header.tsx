@@ -29,7 +29,6 @@ const Header: FC = () => {
     total = cart.reduce((ac, i) => ac + i.price , 0),
     dispatch = useDispatch(),
     removeHandler = (id: string) => {
-        
         dispatch(removeFromCart(id))
     };
     
@@ -81,6 +80,5 @@ const Header: FC = () => {
         </div>
     </div>
   )
-}
-
-export default Header
+}  
+export default Header;

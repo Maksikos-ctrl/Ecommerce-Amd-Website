@@ -8,8 +8,9 @@ export const addToCart = (good: IGood, count: number) => ({
 
 
 export const removeFromCart = (goodId: string) => ({
-    type: actionTypes.CART_ADD_ITEM,
+    type: actionTypes.CART_REMOVE_ITEM,
     payload: goodId
 });
 
 
+ 

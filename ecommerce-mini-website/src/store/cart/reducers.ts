@@ -11,12 +11,13 @@ export const cartReducer = (state = initState, action: TypeActionCart) => {
             {count, good} = action.payload, // from action.payload we're getting count - quanitity of goods which have to be added in a basket and good
             foundGood = cart.find(i => i._id === good._id);
 
-       
-
+        
         foundGood ? foundGood.count = count : cart.push({...good, count}) // if we have found our good, we're changing its count, unless, we're pushing in a basket
+        
+        
           
         if (foundGood === undefined) {
-          console.log('fuck');
+          console.log('nice'); 
         } 
         
         return cart
