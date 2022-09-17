@@ -6,13 +6,17 @@ import store from '../../store/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
 import Spinner from '../spinner/Spinner';
+import Footer from '../footer/Footer';
+import goods from '../data/goods';
+
 
 function App() {
   return (
     <Provider store={store}>
       <PersistGate loading={<Spinner/>} persistor={persistStore(store)}>
         <Header/>
-        <Goods/>
+        <Goods goods={goods}/>
+        <Footer/>
       </PersistGate>
     </Provider>
   

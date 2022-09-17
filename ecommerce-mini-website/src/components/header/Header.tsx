@@ -9,6 +9,7 @@ import cartImage from '../../assets/imgs/bx-cart.svg';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useDispatch } from 'react-redux';
 import { removeFromCart } from '../../store/cart/actions';
+import SearchFilter from '../searchFilter/SearchFilter';
 
 
 // const cartItems: ICartItem[] = [
@@ -32,6 +33,7 @@ const Header: FC = () => {
         dispatch(removeFromCart(id))
     };
     
+    
 
 
    
@@ -45,11 +47,12 @@ const Header: FC = () => {
     }}>
         <img src={logoImage} alt="" width="120"/>
 
-
+        <SearchFilter/>
        
+        
 
         <button className="bg-transparent border-none relative" onClick={() => setShownCart(!isShownCart)}>
-            <img src={cartImage} alt="" width="40" />
+            <img src={cartImage} alt="" width="60" />
             <div className="text-orange-600 absolute bottom-0 right-1 font-bold p-2 rounded-full bg-white w-5 h-3 flex items-center content-center text-center">
                 {cart.length}
             </div>
@@ -81,4 +84,5 @@ const Header: FC = () => {
     </div>
   )
 }  
+
 export default Header;
