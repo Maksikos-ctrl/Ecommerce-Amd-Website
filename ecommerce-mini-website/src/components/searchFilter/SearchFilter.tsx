@@ -1,12 +1,27 @@
 import { FC, useState } from 'react';
-
-
+import Goods from '../allGoods/Goods';
+import {IGood} from '../../types';
 
 // interface SearchFilterProps {
 //     children: React.ReactNode;
 // }
 
-const SearchFilter: FC = () => {
+const SearchFilter = ({goods}: {goods: IGood[]}) => {
+ 
+    const [searchField, setSearchField] = useState(''),
+        [searchShow, setSearchShow] = useState(false),
+        filteredItms = goods.filter(good => good.name.includes(searchField.toLowerCase())),
+        handleChanges = (e: React.ChangeEvent<HTMLInputElement>) => {
+            console.log(e.target.value);
+            setSearchField(e.target.value)
+            e.target.value === "" ? setSearchShow(false) : setSearchShow(true); 
+        };
+        
+        
+    
+
+
+
     return (
         <form className="max-w-sm px-2">
             <div className="relative">
@@ -24,31 +39,23 @@ const SearchFilter: FC = () => {
                         d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                     />
                 </svg>
-                <SearchInput/>
-                
+                <input
+                    type="text"
+                    placeholder="Search"
+                    className="w-full py-3 pl-12 pr-10 text-gray-500 border rounded-md outline-none bg-gray-50 focus:bg-white focus:border-indigo-600 font-extrabold"
+                    onChange={handleChanges}
+                    
+                />
+               
             </div>
+          
        </form>
+
+       
     )
 }
 
- const SearchInput: FC = () => {
-    const [searchGood, setSearchGood] = useState('');
-    return (
-        <input
-            type="text"
-            placeholder="Search"
-            className="w-full py-3 pl-12 pr-10 text-gray-500 border rounded-md outline-none bg-gray-50 focus:bg-white focus:border-indigo-600 font-extrabold"
-            onChange={e => console.log(e.target.value)}
-            
-        />
-        
-      
-                
-       
 
-   
-     )  
-}
 
 
 export default SearchFilter;

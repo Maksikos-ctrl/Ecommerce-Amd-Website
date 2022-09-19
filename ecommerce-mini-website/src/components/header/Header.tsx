@@ -10,7 +10,7 @@ import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useDispatch } from 'react-redux';
 import { removeFromCart } from '../../store/cart/actions';
 import SearchFilter from '../searchFilter/SearchFilter';
-
+import goods from '../data/goods';
 
 // const cartItems: ICartItem[] = [
 //     {
@@ -47,7 +47,7 @@ const Header: FC = () => {
     }}>
         <img src={logoImage} alt="" width="120"/>
 
-        <SearchFilter/>
+        <SearchFilter goods={goods}/>
        
         
 

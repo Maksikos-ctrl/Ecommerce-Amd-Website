@@ -5,6 +5,7 @@ export interface IGood {
     name: string;
     imagePath: string;
     price: number;
+    children?: JSX.Element|JSX.Element[];
 }
 
 export interface ICartItem extends IGood  {

@@ -8,8 +8,8 @@ import {IGood} from '../../types';
 
 
 const Goods = ({goods}: {goods: IGood[]}) => {
-//    const [searchGood, setSearchGood] = useState('');  
-    const filteredItms = goods.map(i => <GoodItem good={i} key={i._id}/>)
+  const [searchField, setSearchField] = useState(''),
+      filteredItms = goods.filter(good => good.name.includes(searchField.toLowerCase())).map(i => <GoodItem good={i} key={i._id}/>)
    
 //   return (
 //     <div className="mt-4">
