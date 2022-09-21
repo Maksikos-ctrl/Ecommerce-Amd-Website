@@ -16,9 +16,9 @@ export const cartReducer = (state = initState, action: TypeActionCart) => {
         
         
           
-        if (foundGood === undefined) {
-          console.log('nice'); 
-        } 
+        // if (foundGood === undefined) {
+        //   console.log('nice'); 
+        // } 
         
         return cart
       }

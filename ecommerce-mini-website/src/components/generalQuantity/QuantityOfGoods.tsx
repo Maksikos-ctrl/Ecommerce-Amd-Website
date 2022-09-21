@@ -6,12 +6,19 @@ interface IQuantity {
     setCount: TypeSetState<number>
 }
 
+// declare module 'react' {
+//     interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
+//       // extends React's HTMLAttributes
+//       maxLength?: number;
+//     }
+// }
+
 const QuanityOfGoods: FC<IQuantity> = ({count, setCount}) => {
     return (
         <div className="flex items-center my-2">
             <button onClick={() => count > 0 && setCount(count - 1)}>-</button>
-            <input type="number" className="mx-2" onChange={e => setCount(+e.target.value)} value={count}/>
-            <button onClick={() => count < 30 && setCount(count + 1)}>+</button>
+            <input type="text" maxLength={2} className="mx-2" onChange={e => setCount(+e.target.value.replace(/[^0-9]/, ''))} value={count}/>
+            <button onClick={() => count <= 98 && setCount(count + 1)}>+</button>
         </div>
     )
 }

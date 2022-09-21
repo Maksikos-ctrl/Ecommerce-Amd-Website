@@ -27,7 +27,7 @@ const Header: FC = () => {
  
   const [isShownCart, setShownCart] = useState(false),
     cart = useTypedSelector(state => state.cart),
-    total = cart.reduce((ac, i) => ac + i.price , 0),
+    total = cart.reduce((ac, i) => ac + (i?.price || 0), 0),
     dispatch = useDispatch(),
     removeHandler = (id: string) => {
         dispatch(removeFromCart(id))

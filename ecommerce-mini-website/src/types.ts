@@ -10,6 +10,7 @@ export interface IGood {
 
 export interface ICartItem extends IGood  {
     count: number;
+    quantity?: number;
 }
 
 export type TypeSetState<T> = Dispatch<SetStateAction<T>>
