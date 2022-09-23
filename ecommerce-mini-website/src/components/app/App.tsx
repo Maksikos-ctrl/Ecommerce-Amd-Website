@@ -7,7 +7,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
 import Spinner from '../spinner/Spinner';
 import Footer from '../footer/Footer';
-import goods from '../data/goods';
+import goods from '../../data/goods';
 
 
 function App() {

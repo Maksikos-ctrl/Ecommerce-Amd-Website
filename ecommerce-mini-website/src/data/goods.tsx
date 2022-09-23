@@ -1,4 +1,4 @@
-import {IGood} from '../../types';
+import {IGood} from '../types';
 
 const goods: IGood[] = [
     {
