@@ -41,7 +41,7 @@ const SearchFilter = ({goods}: {goods: IGood[]}, e: React.MouseEvent<HTMLLIEleme
                 </svg>
                 <input
                     type="text"
-                    value={(e.target as HTMLInputElement).value}
+                    
                     placeholder="Search"
                     className="w-full py-3 pl-12 pr-10 text-gray-500 border rounded-md outline-none bg-gray-50 focus:bg-white focus:border-indigo-600 font-extrabold"
                     onChange={handleChanges}
