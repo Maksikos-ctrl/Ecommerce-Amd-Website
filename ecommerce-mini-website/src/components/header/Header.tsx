@@ -22,12 +22,17 @@ import goods from '../../data/goods';
 //     }
 // ];
 
+interface IHeader {
+    handleChange: React.Dispatch<React.SetStateAction<string>>;
+    query: string;
+}
 
-const Header: FC = () => {
+
+const Header = ({query, handleChange}: IHeader) => {
  
   const [isShownCart, setShownCart] = useState(false),
     cart = useTypedSelector(state => state.cart),
-    total = cart.reduce((ac, i) => i.count * i.price + ac + (i?.price || 0), 0),
+    total = cart.reduce((ac, i) => (i.count * (i?.price || 0)) + ac, 0),
     dispatch = useDispatch(),
     removeHandler = (id: string) => {
         dispatch(removeFromCart(id))
@@ -47,7 +52,7 @@ const Header: FC = () => {
     }}>
         <img src={logoImage} alt="" width="120"/>
 
-        <SearchFilter goods={goods}/>
+        <SearchFilter query={query} handleChange={handleChange}/>
        
         
 
@@ -78,7 +83,7 @@ const Header: FC = () => {
                         
             <div className="text-lg border-solid border-t-2 border-red-100 pt-1 mt-5">
                 Total: <b>${total.toLocaleString()}</b>
-                <h3>+ VAT</h3>
+                
             </div>
            
         </div>

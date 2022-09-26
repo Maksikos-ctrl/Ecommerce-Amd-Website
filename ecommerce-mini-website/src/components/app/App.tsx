@@ -1,4 +1,4 @@
-import React from 'react';
+import {useState} from 'react';
 import Header from '../header/Header';
 import Goods from '../allGoods/Goods';
 import { Provider } from 'react-redux';
@@ -11,11 +11,17 @@ import goods from '../../data/goods';
 
 
 function App() {
+   
+  const [query, setQuery] = useState('');
+
+  console.log('Hi world',query);
+
+
   return (
     <Provider store={store}>
       <PersistGate loading={<Spinner/>} persistor={persistStore(store)}>
-        <Header/>
-        <Goods goods={goods}/>
+        <Header query={query} handleChange={setQuery}/>
+        <Goods query={query} />
         <Footer/>
       </PersistGate>
     </Provider>

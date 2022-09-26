@@ -6,15 +6,22 @@ import {IGood} from '../../types';
 //     children: React.ReactNode;
 // }
 
-const SearchFilter = ({goods}: {goods: IGood[]}, e: React.MouseEvent<HTMLLIElement>) => {
+interface ISearchFilter {
+    handleChange: React.Dispatch<React.SetStateAction<string>>;
+    query: string;
+}
+
+const SearchFilter = ({query, handleChange}: ISearchFilter, e: React.MouseEvent<HTMLLIElement>) => {
  
-    const [searchField, setSearchField] = useState(''),
-        [searchShow, setSearchShow] = useState(false),
-        filteredItms = goods.filter(good => good.name.includes(searchField.toLowerCase())),
-        handleChanges = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // const [searchField, setSearchField] = useState(''),
+    //     [searchShow, setSearchShow] = useState(false),
+        // filteredItms = goods.filter(good => good.name.includes(searchField.toLowerCase())),
+    const handleChanges = (e: React.ChangeEvent<HTMLInputElement>) => {
             console.log(e.target.value);
-            setSearchField(e.target.value)
-            e.target.value === "" ? setSearchShow(false) : setSearchShow(true); 
+            handleChange(e.target.value)
+            // setSearchShow(!!e.target.value);
+            // Shitcode
+            // e.target.value === "" ? setSearchShow(false) : setSearchShow(true); 
         };
         
         
